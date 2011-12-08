@@ -15,3 +15,13 @@ def isNumPalindrome(x):
 		if x_str[i] != x_str[x_len-(1+i)]:
 			return 0
 	return 1
+
+# function to check if a number is prime
+# currently handles x >= 2
+def isPrime(x):
+	import math
+	end_point = math.sqrt(x)
+	for i in range (2, end_point+1):
+		if x % i == 0:
+			return 0
+	return 1
