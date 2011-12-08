@@ -20,7 +20,7 @@ def isNumPalindrome(x):
 # currently handles x >= 2
 def isPrime(x):
 	import math
-	end_point = math.sqrt(x)
+	end_point = int(math.sqrt(x))
 	for i in range (2, end_point+1):
 		if x % i == 0:
 			return 0
