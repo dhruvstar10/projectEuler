@@ -77,3 +77,9 @@ def getDivisors(x):
 		divisorArray.pop()
 	
 	return divisorArray
+
+# function to calculate sum of proper divisors of x, which are less than x
+# this function does not handle x = 0. This is to improve efficiency and reduce this
+# extra check for all x.
+def getDivisorSum(x):
+	return sum(getDivisors(x)) - x	# because divisors of x includes x
