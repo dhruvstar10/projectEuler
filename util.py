@@ -56,3 +56,24 @@ def triangle(x):
 	for i in range (1, x+1):
 		sum += i
 	return sum
+
+# function to return an array of unique divisors/factors of a natural numbers (integers > 0)
+# the divisors include the 1 and the number itself
+# the divisors in the array are not in any particular order
+# x must be an integer greater than 0
+def getDivisors(x):
+	# initialize return array of divisors
+	divisorArray = []
+
+	import math
+	end_point = int(math.sqrt(x))	# need to check only till floor of sq root
+	for i in range (1, end_point+1): # check from 1 to including end point
+		if x % i == 0:
+			divisorArray.append(i)		# i is a divisor, append it
+			divisorArray.append(x/i)	# if i is a divisor, so is x/i
+	
+	# if x is a perfect square, the square was added last and twice. Remove the copy.
+	if end_point * end_point == x:
+		divisorArray.pop()
+	
+	return divisorArray
