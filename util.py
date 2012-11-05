@@ -83,3 +83,28 @@ def getDivisors(x):
 # extra check for all x.
 def getDivisorSum(x):
 	return sum(getDivisors(x)) - x	# because divisors of x includes x
+
+# function to get the length of the recurring cycle in the decimal part of a/b
+# should return 0 if there is no recurring cycle
+# So, for example, 1/7 = 0.(142857)(142857)..., and the length of the cycle is 6
+# This function simulates long division
+def getDecimalCycleLength(a,b):
+	# First get rid of the integer part
+	a = a % b
+
+	# a list of remainders seen till now
+	remainders = []
+	while(a):	# terminate loop if decimal terminates
+		# a is the current remainder, check to see if it has been seen before
+		if a in remainders:
+			# yes a has been seen before, so we will be entering a decimal cycle now if we continue
+			return len(remainders) - remainders.index(a)
+		else:
+			# a is seen for the first time, so add it to list of already seen remainders
+			remainders.append(a)
+		# a is the current remainder that needs to be divided by b
+		a *= 10
+		if a > b:	# can divide only if a > b
+			a = a % b	# get next remainder
+	# loop termination implies that a was 0
+	return 0
