@@ -108,3 +108,39 @@ def getDecimalCycleLength(a,b):
 			a = a % b	# get next remainder
 	# loop termination implies that a was 0
 	return 0
+
+# function to get the number of integral pythogorean triples given the perimeter p
+# find number of integral (a,b,c) solving a+b+c = p and a^2 + b^2 = c^2 
+def numPythagoreanTriplets(p):
+	# start by assuming a value of a, and then getting b and c and see if they make sense
+	# then loop through values of a
+
+	# initialize
+	a = 1
+	numSolutions = 0
+	pythagoreanNumbers = [] # save values already calculated to avoid duplicate answers
+	
+	while a < p/2:
+		# now need to solve 2 equations in 2 variables
+		p_minus_a = float(p - a)
+		a_square = a*a
+		b = (p_minus_a - (a_square/p_minus_a))/2
+		c = (p_minus_a + (a_square/p_minus_a))/2
+
+		# now verify that the values we have form a pythagorean triplet
+		b = int(b)
+		c = int(c)
+
+		if ((a*a) + (b*b) == (c*c)) and not(a in pythagoreanNumbers):
+			# add a, b and c to already seen solutions
+			pythagoreanNumbers.append(a)
+			pythagoreanNumbers.append(b)
+			pythagoreanNumbers.append(c)
+
+			# got a new solution
+			numSolutions += 1
+		
+		a += 1	# progress loop
+	
+	return numSolutions
+
