@@ -6,6 +6,7 @@
 # than once.  We achieve this by memoizing the maximal sum down from each node once
 # it is calculated for the first time. 
 
+# to get command line arguments
 import sys
 from readPyramid import *
 
