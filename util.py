@@ -144,3 +144,6 @@ def numPythagoreanTriplets(p):
 	
 	return numSolutions
 
+# a function to return the number of digits in an integer
+def numDigits(x):
+	return len(str(x))
